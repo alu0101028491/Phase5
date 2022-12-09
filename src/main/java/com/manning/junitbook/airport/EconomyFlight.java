@@ -33,6 +33,7 @@ public class EconomyFlight extends Flight {
 
     @Override
     public boolean removePassenger(Passenger passenger) {
+        
         if (!passenger.isVip()) {
             return passengers.remove(passenger);
         }
