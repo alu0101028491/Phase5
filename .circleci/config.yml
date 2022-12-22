@@ -6,14 +6,15 @@ jobs:
     docker: 
       - image: cimg/openjdk:11.0
     steps:
+      - run:
+          name: Verify
+          command: mvn -B clean verify
       - store_test_results:
           path: target/surefire-reports
 
 workflows:
   maven_test:
     jobs:
-      - maven/test:
-          command: verify
       - maven_test_storing
 
 
