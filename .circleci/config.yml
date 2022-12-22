@@ -7,8 +7,11 @@ jobs:
       - image: cimg/openjdk:11.0
     steps:
       - run:
+          name: Build
+          command: mvn -B -DskipTests clean package
+      - run:
           name: Verify
-          command: mvn -B clean verify
+          command: mvn -B verify
       - store_test_results:
           path: target/surefire-reports
 
