@@ -2,13 +2,10 @@ version: 2.1
 orbs:
   maven: circleci/maven@1.4.0
 jobs:
-  maven_testing:
+  maven_test_storing:
     docker: 
       - image: cimg/openjdk:11.0
     steps:
-      - run:
-          name: Maven verify
-          command: '-X verify'
       - run:
           name: Save test results
           command: |
@@ -21,7 +18,9 @@ jobs:
 workflows:
   maven_test:
     jobs:
-      - maven_testing
+      - maven/test:
+          command: verify
+      - maven_test_storing
 
 
 
