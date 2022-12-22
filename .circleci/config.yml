@@ -16,7 +16,7 @@ workflows:
   maven_test:
     jobs:
       - maven/test:
-          command: verify'
+          command: verify
 
 
 
