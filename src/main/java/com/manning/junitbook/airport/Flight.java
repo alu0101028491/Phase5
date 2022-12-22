@@ -23,7 +23,7 @@ package com.manning.junitbook.airport;
 import java.util.*;
 
 public abstract class Flight {
-
+    // Attributes
     private String id;
     Set<Passenger> passengers = new HashSet<>();
 
