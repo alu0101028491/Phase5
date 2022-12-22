@@ -1,18 +1,22 @@
-version: '2.1'
+version: 2.1
 orbs:
   maven: circleci/maven@1.4.0
+
+steps:
+  - run:
+    name: Save test results
+    command: |
+      mkdir -p ~/test-results/junit/
+      find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} ~/test-results/junit/ \;
+    when: always
+  - store_test_results:
+    path: ~/test-results
+
 workflows:
   maven_test:
     jobs:
       - maven/test:
-          command: verify
-      - save_test_results:
-            command: |
-            mkdir -p ~/test-results/junit/
-            find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} ~/test-results/junit/ \;
-            when: always
-       - store_test_results:
-          path: ~/test-results
+          command: verify'
 
 
 
