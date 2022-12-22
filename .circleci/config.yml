@@ -8,7 +8,7 @@ jobs:
     steps:
       - run:
           name: Maven verify
-          command: verify
+          command: mvn verify
       - run:
           name: Save test results
           command: |
