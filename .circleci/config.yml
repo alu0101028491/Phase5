@@ -6,3 +6,5 @@ workflows:
     jobs:
       - maven/test:
           command: verify
+      - store_test_results:
+          path: test-results
